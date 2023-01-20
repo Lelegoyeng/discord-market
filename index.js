@@ -47,17 +47,29 @@ client.on('message', async msg => {
       const blackmarket = await axios.get(
         `https://www.albion-online-data.com/api/v2/stats/prices/${itemlist[i]}?locations=blackmarket`
       );
+        let enchant = ""
+        if(itemlist[i].match(/^.*@1$/)){
+          enchant = 'Enchant 1'
+        }else if(itemlist[i].match(/^.*@2$/)){
+          enchant = 'Enchant 2'
+        }else if(itemlist[i].match(/^.*@3$/)){
+          enchant = 'Enchant 3'
+        }else if(itemlist[i].match(/^.*@4$/)){
+          enchant = 'Enchant 4'
+        }else{
+          enchant = 'Enchant 0'
+        }
 
         if(blackmarket?.data[0]?.buy_price_min > carleon?.data[0]?.sell_price_min){
           if(blackmarket?.data[0]?.buy_price_min !== 0 && carleon?.data[0]?.sell_price_min !== 0){
             const tax = blackmarket?.data[0]?.buy_price_min * 0.07
             const totalprice = blackmarket?.data[0]?.buy_price_min + tax
             if(totalprice > carleon?.data[0]?.sell_price_min){
-              const profitnow = totalprice - carleon?.data[0]?.sell_price_min
+              const profitnow = parseInt(totalprice - carleon?.data[0]?.sell_price_min)
               const embed = await new MessageEmbed()
               .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
               .setAuthor({ name: `🍟 ${itemnama[i]}` })
-              .setDescription('Quality Normal')
+              .setDescription(`Quality Normal - ${enchant}`)
               .addFields({name: 'Black Market', value: blackmarket?.data[0]?.buy_price_min.toString(), inline: true})
               .addFields({name: 'Caerleon Market', value: carleon?.data[0]?.sell_price_min.toString(), inline: true})
               .addFields({name: 'Profit', value: profitnow.toString(), inline: true})
@@ -73,11 +85,11 @@ client.on('message', async msg => {
             const tax = blackmarket?.data[1]?.buy_price_min * 0.07
             const totalprice = blackmarket?.data[1]?.buy_price_min + tax
             if(totalprice > carleon?.data[1]?.sell_price_min){
-              const profitnow = totalprice - carleon?.data[1]?.sell_price_min
+              const profitnow = parseInt(totalprice - carleon?.data[1]?.sell_price_min)
               const embed = await new MessageEmbed()
               .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
               .setAuthor({ name: `🍟 ${itemnama[i]}` })
-              .setDescription('Quality Good')
+              .setDescription(`Quality Good - ${enchant}`)
               .addFields({name: 'Black Market', value: blackmarket?.data[1]?.buy_price_min.toString(), inline: true})
               .addFields({name: 'Caerleon Market', value: carleon?.data[1]?.sell_price_min.toString(), inline: true})
               .addFields({name: 'Profit', value: profitnow.toString(), inline: true})
@@ -93,11 +105,11 @@ client.on('message', async msg => {
             const tax = blackmarket?.data[2]?.buy_price_min * 0.07
             const totalprice = blackmarket?.data[2]?.buy_price_min + tax
             if(totalprice > carleon?.data[2]?.sell_price_min){
-              const profitnow = totalprice - carleon?.data[2]?.sell_price_min
+              const profitnow = parseInt(totalprice - carleon?.data[2]?.sell_price_min)
               const embed = await new MessageEmbed()
               .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
               .setAuthor({ name: `🍟 ${itemnama[i]}` })
-              .setDescription('Quality Outstanding')
+              .setDescription(`Quality Outstanding - ${enchant}`)
               .addFields({name: 'Black Market', value: blackmarket?.data[2]?.buy_price_min.toString(), inline: true})
               .addFields({name: 'Caerleon Market', value: carleon?.data[2]?.sell_price_min.toString(), inline: true})
               .addFields({name: 'Profit', value: profitnow.toString(), inline: true})
@@ -113,11 +125,11 @@ client.on('message', async msg => {
             const tax = blackmarket?.data[3]?.buy_price_min * 0.07
             const totalprice = blackmarket?.data[3]?.buy_price_min + tax
             if(totalprice > carleon?.data[3]?.sell_price_min){
-              const profitnow = totalprice - carleon?.data[3]?.sell_price_min
+              const profitnow = parseInt(totalprice - carleon?.data[3]?.sell_price_min)
               const embed = await new MessageEmbed()
               .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
               .setAuthor({ name: `🍟 ${itemnama[i]}` })
-              .setDescription('Quality Excellent')
+              .setDescription(`Quality Excellent - ${enchant}`)
               .addFields({name: 'Black Market', value: blackmarket?.data[3]?.buy_price_min.toString(), inline: true})
               .addFields({name: 'Caerleon Market', value: carleon?.data[3]?.sell_price_min.toString(), inline: true})
               .addFields({name: 'Profit', value: profitnow.toString(), inline: true})
@@ -133,11 +145,11 @@ client.on('message', async msg => {
             const tax = blackmarket?.data[4]?.buy_price_min * 0.07
             const totalprice = blackmarket?.data[4]?.buy_price_min + tax
             if(totalprice > carleon?.data[4]?.sell_price_min){
-              const profitnow = totalprice - carleon?.data[4]?.sell_price_min
+              const profitnow = parseInt(totalprice - carleon?.data[4]?.sell_price_min)
               const embed = await new MessageEmbed()
               .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
               .setAuthor({ name: `🍟 ${itemnama[i]}` })
-              .setDescription('Quality MasterPiece')
+              .setDescription(`Quality MasterPiece - ${enchant}`)
               .addFields({name: 'Black Market', value: blackmarket?.data[4]?.buy_price_min.toString(), inline: true})
               .addFields({name: 'Caerleon Market', value: carleon?.data[4]?.sell_price_min.toString(), inline: true})
               .addFields({name: 'Profit', value: profitnow.toString(), inline: true})
