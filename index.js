@@ -45,7 +45,7 @@ client.on('message', async msg => {
             if (blackmarket?.data[0]?.buy_price_min > carleon?.data[0]?.sell_price_min) {
               if(blackmarket?.data[0]?.buy_price_min !== 0 && carleon?.data[0]?.sell_price_min !== 0){
                 msg.channel.send(`
-                ${blackmarket?.data[0]?.item_id} - Blackmarket Price( ${blackmarket?.data[0]?.buy_price_min} ) -
+                Quality Normal - ${blackmarket?.data[0]?.item_id} - Blackmarket Price( ${blackmarket?.data[0]?.buy_price_min} ) -
                 Carleon Price ( ${carleon?.data[0]?.sell_price_min} )
                 `);
               }
@@ -53,6 +53,43 @@ client.on('message', async msg => {
             }else{
               console.log("berjalan")
             }
+
+            if (blackmarket?.data[1]?.buy_price_min > carleon?.data[1]?.sell_price_min) {
+              if(blackmarket?.data[1]?.buy_price_min !== 0 && carleon?.data[1]?.sell_price_min !== 0){
+                msg.channel.send(`
+                Quality Good - ${blackmarket?.data[1]?.item_id} - Blackmarket Price( ${blackmarket?.data[1]?.buy_price_min} ) -
+                Carleon Price ( ${carleon?.data[1]?.sell_price_min} )
+                `);
+              }
+            }
+
+            if (blackmarket?.data[2]?.buy_price_min > carleon?.data[2]?.sell_price_min) {
+              if(blackmarket?.data[2]?.buy_price_min !== 0 && carleon?.data[2]?.sell_price_min !== 0){
+                msg.channel.send(`
+                Quality Outstanding - ${blackmarket?.data[2]?.item_id} - Blackmarket Price( ${blackmarket?.data[2]?.buy_price_min} ) -
+                Carleon Price ( ${carleon?.data[2]?.sell_price_min} )
+                `);
+              }
+            }
+
+            if (blackmarket?.data[3]?.buy_price_min > carleon?.data[3]?.sell_price_min) {
+              if(blackmarket?.data[3]?.buy_price_min !== 0 && carleon?.data[3]?.sell_price_min !== 0){
+                msg.channel.send(`
+                Quality Excelent - ${blackmarket?.data[3]?.item_id} - Blackmarket Price( ${blackmarket?.data[3]?.buy_price_min} ) -
+                Carleon Price ( ${carleon?.data[3]?.sell_price_min} )
+                `);
+              }
+            }
+
+            if (blackmarket?.data[4]?.buy_price_min > carleon?.data[4]?.sell_price_min) {
+              if(blackmarket?.data[4]?.buy_price_min !== 0 && carleon?.data[4]?.sell_price_min !== 0){
+                msg.channel.send(`
+                Quality MasterPiece - ${blackmarket?.data[4]?.item_id} - Blackmarket Price( ${blackmarket?.data[4]?.buy_price_min} ) -
+                Carleon Price ( ${carleon?.data[4]?.sell_price_min} )
+                `);
+              }
+            }
+
   
           }
 
