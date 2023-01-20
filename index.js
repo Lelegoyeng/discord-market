@@ -38,7 +38,7 @@ client.on('message', async msg => {
       case "!start":
         msg.channel.send('Get Data Market Price...')
      interval = setInterval (async function(){
-      i = i+1
+      i = i-1
       console.log(i)
       const carleon = await axios.get(
         `https://www.albion-online-data.com/api/v2/stats/prices/${itemlist[i]}?locations=caerleon`
@@ -63,9 +63,9 @@ client.on('message', async msg => {
         if(blackmarket?.data[0]?.buy_price_min > carleon?.data[0]?.sell_price_min){
           if(blackmarket?.data[0]?.buy_price_min !== 0 && carleon?.data[0]?.sell_price_min !== 0){
             const tax = blackmarket?.data[0]?.buy_price_min * 0.07
-            const totalprice = blackmarket?.data[0]?.buy_price_min + tax
+            const totalprice = blackmarket?.data[0]?.buy_price_min - parseInt(tax)
             if(totalprice > carleon?.data[0]?.sell_price_min){
-              const profitnow = parseInt(totalprice - carleon?.data[0]?.sell_price_min)
+              const profitnow = totalprice - carleon?.data[0]?.sell_price_min
               const embed = await new MessageEmbed()
               .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
               .setAuthor({ name: `🍟 ${itemnama[i]}` })
@@ -83,9 +83,9 @@ client.on('message', async msg => {
         if(blackmarket?.data[1]?.buy_price_min > carleon?.data[1]?.sell_price_min){
           if(blackmarket?.data[1]?.buy_price_min !== 0 && carleon?.data[1]?.sell_price_min !== 0){
             const tax = blackmarket?.data[1]?.buy_price_min * 0.07
-            const totalprice = blackmarket?.data[1]?.buy_price_min + tax
+            const totalprice = blackmarket?.data[1]?.buy_price_min - parseInt(tax)
             if(totalprice > carleon?.data[1]?.sell_price_min){
-              const profitnow = parseInt(totalprice - carleon?.data[1]?.sell_price_min)
+              const profitnow = totalprice - carleon?.data[1]?.sell_price_min
               const embed = await new MessageEmbed()
               .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
               .setAuthor({ name: `🍟 ${itemnama[i]}` })
@@ -103,9 +103,9 @@ client.on('message', async msg => {
         if(blackmarket?.data[2]?.buy_price_min > carleon?.data[2]?.sell_price_min){
           if(blackmarket?.data[2]?.buy_price_min !== 0 && carleon?.data[2]?.sell_price_min !== 0){
             const tax = blackmarket?.data[2]?.buy_price_min * 0.07
-            const totalprice = blackmarket?.data[2]?.buy_price_min + tax
+            const totalprice = blackmarket?.data[2]?.buy_price_min - parseInt(tax)
             if(totalprice > carleon?.data[2]?.sell_price_min){
-              const profitnow = parseInt(totalprice - carleon?.data[2]?.sell_price_min)
+              const profitnow = totalprice - carleon?.data[2]?.sell_price_min
               const embed = await new MessageEmbed()
               .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
               .setAuthor({ name: `🍟 ${itemnama[i]}` })
@@ -123,9 +123,9 @@ client.on('message', async msg => {
         if(blackmarket?.data[3]?.buy_price_min > carleon?.data[3]?.sell_price_min){
           if(blackmarket?.data[3]?.buy_price_min !== 0 && carleon?.data[3]?.sell_price_min !== 0){
             const tax = blackmarket?.data[3]?.buy_price_min * 0.07
-            const totalprice = blackmarket?.data[3]?.buy_price_min + tax
+            const totalprice = blackmarket?.data[3]?.buy_price_min - parseInt(tax)
             if(totalprice > carleon?.data[3]?.sell_price_min){
-              const profitnow = parseInt(totalprice - carleon?.data[3]?.sell_price_min)
+              const profitnow = totalprice - carleon?.data[3]?.sell_price_min
               const embed = await new MessageEmbed()
               .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
               .setAuthor({ name: `🍟 ${itemnama[i]}` })
@@ -143,9 +143,9 @@ client.on('message', async msg => {
         if(blackmarket?.data[4]?.buy_price_min > carleon?.data[4]?.sell_price_min){
           if(blackmarket?.data[4]?.buy_price_min !== 0 && carleon?.data[4]?.sell_price_min !== 0){
             const tax = blackmarket?.data[4]?.buy_price_min * 0.07
-            const totalprice = blackmarket?.data[4]?.buy_price_min + tax
+            const totalprice = blackmarket?.data[4]?.buy_price_min - parseInt(tax)
             if(totalprice > carleon?.data[4]?.sell_price_min){
-              const profitnow = parseInt(totalprice - carleon?.data[4]?.sell_price_min)
+              const profitnow = totalprice - carleon?.data[4]?.sell_price_min
               const embed = await new MessageEmbed()
               .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
               .setAuthor({ name: `🍟 ${itemnama[i]}` })
