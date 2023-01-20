@@ -43,17 +43,12 @@ client.on('message', async msg => {
           );
           if (blackmarket?.data[0]?.buy_price_min > carleon?.data[0]?.sell_price_min) {
             if(blackmarket?.data[0]?.buy_price_min !== 0 && carleon?.data[0]?.sell_price_min !== 0){
-              console.log(carleon?.data[0]);
-              console.log(blackmarket?.data[0]);
-              console.log("a");
               msg.channel.send(`
               ${blackmarket?.data[0]?.item_id} - Blackmarket Price( ${blackmarket?.data[0]?.buy_price_min} ) -
               Carleon Price ( ${carleon?.data[0]?.sell_price_min} )
               `);
             }
            
-          }else {
-            console.log("b")
           }
 
         }
