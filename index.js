@@ -26,80 +26,73 @@ loadFeatures(client)
     return e.nama;
   });
 
+let interval
+let i = 0
 client.on('message', async msg => {
-    let i = 0
     switch (msg.content) {
 
       case "!start":
-        (async ()=> {
-          for(i; i < itemlist.length; i++){
-            console.log(i)
-           
-            const carleon = await axios.get(
-              `https://www.albion-online-data.com/api/v2/stats/prices/${itemlist[i]}?locations=caerleon`
-            );
-          
-            const blackmarket = await axios.get(
-              `https://www.albion-online-data.com/api/v2/stats/prices/${itemlist[i]}?locations=blackmarket`
-            );
-            if (blackmarket?.data[0]?.buy_price_min > carleon?.data[0]?.sell_price_min) {
-              if(blackmarket?.data[0]?.buy_price_min !== 0 && carleon?.data[0]?.sell_price_min !== 0){
-                msg.channel.send(`
-                Quality Normal - ${blackmarket?.data[0]?.item_id} - Blackmarket Price( ${blackmarket?.data[0]?.buy_price_min} ) -
-                Carleon Price ( ${carleon?.data[0]?.sell_price_min} )
-                `);
-              }
-             
-            }else{
-              console.log("berjalan")
-            }
+     interval = setInterval (async function(){
+      i = i+1
+      console.log(i)
+      const carleon = await axios.get(
+        `https://www.albion-online-data.com/api/v2/stats/prices/${itemlist[i]}?locations=caerleon`
+      );
+    
+      const blackmarket = await axios.get(
+        `https://www.albion-online-data.com/api/v2/stats/prices/${itemlist[i]}?locations=blackmarket`
+      );
 
-            if (blackmarket?.data[1]?.buy_price_min > carleon?.data[1]?.sell_price_min) {
-              if(blackmarket?.data[1]?.buy_price_min !== 0 && carleon?.data[1]?.sell_price_min !== 0){
-                msg.channel.send(`
-                Quality Good - ${blackmarket?.data[1]?.item_id} - Blackmarket Price( ${blackmarket?.data[1]?.buy_price_min} ) -
-                Carleon Price ( ${carleon?.data[1]?.sell_price_min} )
-                `);
-              }
-            }
-
-            if (blackmarket?.data[2]?.buy_price_min > carleon?.data[2]?.sell_price_min) {
-              if(blackmarket?.data[2]?.buy_price_min !== 0 && carleon?.data[2]?.sell_price_min !== 0){
-                msg.channel.send(`
-                Quality Outstanding - ${blackmarket?.data[2]?.item_id} - Blackmarket Price( ${blackmarket?.data[2]?.buy_price_min} ) -
-                Carleon Price ( ${carleon?.data[2]?.sell_price_min} )
-                `);
-              }
-            }
-
-            if (blackmarket?.data[3]?.buy_price_min > carleon?.data[3]?.sell_price_min) {
-              if(blackmarket?.data[3]?.buy_price_min !== 0 && carleon?.data[3]?.sell_price_min !== 0){
-                msg.channel.send(`
-                Quality Excelent - ${blackmarket?.data[3]?.item_id} - Blackmarket Price( ${blackmarket?.data[3]?.buy_price_min} ) -
-                Carleon Price ( ${carleon?.data[3]?.sell_price_min} )
-                `);
-              }
-            }
-
-            if (blackmarket?.data[4]?.buy_price_min > carleon?.data[4]?.sell_price_min) {
-              if(blackmarket?.data[4]?.buy_price_min !== 0 && carleon?.data[4]?.sell_price_min !== 0){
-                msg.channel.send(`
-                Quality MasterPiece - ${blackmarket?.data[4]?.item_id} - Blackmarket Price( ${blackmarket?.data[4]?.buy_price_min} ) -
-                Carleon Price ( ${carleon?.data[4]?.sell_price_min} )
-                `);
-              }
-            }
-
-  
+        if(blackmarket?.data[0]?.buy_price_min > carleon?.data[0]?.sell_price_min){
+          if(blackmarket?.data[0]?.buy_price_min !== 0 && carleon?.data[0]?.sell_price_min !== 0){
+            msg.channel.send(`
+            Quality Normal - ${blackmarket?.data[0]?.item_id} - Blackmarket Price( ${blackmarket?.data[0]?.buy_price_min} ) -
+            Carleon Price ( ${carleon?.data[0]?.sell_price_min} )
+            `)
           }
+        }
 
-          if(i == itemlist.length){
-            msg.channel.send("Fetch Success!");
+        if (blackmarket?.data[1]?.buy_price_min > carleon?.data[1]?.sell_price_min) {
+          if(blackmarket?.data[1]?.buy_price_min !== 0 && carleon?.data[1]?.sell_price_min !== 0){
+            msg.channel.send(`
+            Quality Good - ${blackmarket?.data[1]?.item_id} - Blackmarket Price( ${blackmarket?.data[1]?.buy_price_min} ) -
+            Carleon Price ( ${carleon?.data[1]?.sell_price_min} )
+            `);
           }
-        })()
+        }
+
+        if (blackmarket?.data[2]?.buy_price_min > carleon?.data[2]?.sell_price_min) {
+          if(blackmarket?.data[2]?.buy_price_min !== 0 && carleon?.data[2]?.sell_price_min !== 0){
+            msg.channel.send(`
+            Quality Outstanding - ${blackmarket?.data[2]?.item_id} - Blackmarket Price( ${blackmarket?.data[2]?.buy_price_min} ) -
+            Carleon Price ( ${carleon?.data[2]?.sell_price_min} )
+            `);
+          }
+        }
+
+        if (blackmarket?.data[3]?.buy_price_min > carleon?.data[3]?.sell_price_min) {
+          if(blackmarket?.data[3]?.buy_price_min !== 0 && carleon?.data[3]?.sell_price_min !== 0){
+            msg.channel.send(`
+            Quality Excelent - ${blackmarket?.data[3]?.item_id} - Blackmarket Price( ${blackmarket?.data[3]?.buy_price_min} ) -
+            Carleon Price ( ${carleon?.data[3]?.sell_price_min} )
+            `);
+          }
+        }
+
+        if (blackmarket?.data[4]?.buy_price_min > carleon?.data[4]?.sell_price_min) {
+          if(blackmarket?.data[4]?.buy_price_min !== 0 && carleon?.data[4]?.sell_price_min !== 0){
+            msg.channel.send(`
+            Quality MasterPiece - ${blackmarket?.data[4]?.item_id} - Blackmarket Price( ${blackmarket?.data[4]?.buy_price_min} ) -
+            Carleon Price ( ${carleon?.data[4]?.sell_price_min} )
+            `);
+          }
+        }
+
+     }, 3000);
       break;
       case "!stop":
       msg.channel.send("End!");
+      clearInterval(interval)
         break;
     }
   })

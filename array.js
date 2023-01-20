@@ -2320,6 +2320,8 @@ const array = [
     { nama: "T8_2H_REPEATINGCROSSBOW_UNDEAD@2", value: "Elder's Weeping Repeater" },
     { nama: "T8_2H_REPEATINGCROSSBOW_UNDEAD@3", value: "Elder's Weeping Repeater" },
     { nama: "T8_2H_REPEATINGCROSSBOW_UNDEAD@4", value: "Elder's Weeping Repeater" },
+    { nama: "T4_2H_DUALCROSSBOW_HELL", value: "Adept's Boltcasters"},
+    { nama: "T4_2H_DUALCROSSBOW_HELL@1", value: "Adept's Boltcasters"},
 ]
 
 
