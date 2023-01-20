@@ -7,7 +7,10 @@ const client = new Discord.Client({
     intents, 
     disableEveryone: true, partials : ["MESSAGE", "CHANNEL", "REACTION"]
 })
+const axios = require("axios");
 const config = require('@root/config')
+const array = require('./array')
+
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.prefix = config.prefix
@@ -19,21 +22,46 @@ const loadFeatures = require("@features/load-features");
 })
 
 loadFeatures(client)
-
-let interval;
+  const itemlist = array.map((e) => {
+    return e.nama;
+  });
+  
 client.on('message', async msg => {
     switch (msg.content) {
-     //other commands above here...
-     case "!eye":
-        msg.channel.send("You are now subscribed to eye reminders.");
-         interval = setInterval (function () {
-          msg.channel.send("Please take an eye break now!")
-          .catch(console.error); 
-        }, 1000); //every hour
+
+      case "!start":
+      msg.channel.send("You are now subscribed to eye reminders.");
+      (async ()=> {
+        for(let i = 0; i < itemlist.length; i++){
+          console.log(i)
+          const carleon = await axios.get(
+            `https://www.albion-online-data.com/api/v2/stats/prices/${itemlist}?locations=caerleon`
+          );
+        
+          const blackmarket = await axios.get(
+            `https://www.albion-online-data.com/api/v2/stats/prices/${itemlist}?locations=blackmarket`
+          );
+          if (blackmarket?.data[0]?.buy_price_min > carleon?.data[0]?.sell_price_min) {
+            if(blackmarket?.data[0]?.buy_price_min !== 0 && carleon?.data[0]?.sell_price_min !== 0){
+              console.log(carleon?.data[0]);
+              console.log(blackmarket?.data[0]);
+              console.log("a");
+              msg.channel.send(`
+              ${blackmarket?.data[0]?.item_id} - Blackmarket Price( ${blackmarket?.data[0]?.buy_price_min} ) -
+              Carleon Price ( ${carleon?.data[0]?.sell_price_min} )
+              `);
+            }
+           
+          }else {
+            console.log("b")
+          }
+
+        }
+      })()
+
         break;
         case "!stop":
-            msg.channel.send("I have stopped eye reminders.");
-            clearInterval(interval);
+            msg.channel.send("Aktifitas Telah Berhenti");
             break;
     }
   })
