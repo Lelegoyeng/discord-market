@@ -50,81 +50,101 @@ client.on('message', async msg => {
 
         if(blackmarket?.data[0]?.buy_price_min > carleon?.data[0]?.sell_price_min){
           if(blackmarket?.data[0]?.buy_price_min !== 0 && carleon?.data[0]?.sell_price_min !== 0){
-            const profitnormal = blackmarket?.data[0]?.buy_price_min - carleon?.data[0]?.sell_price_min
-            const embed = await new MessageEmbed()
-            .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
-            .setAuthor({ name: `🍟 ${itemnama[i]}` })
-            .setDescription('Quality Normal')
-            .addFields({name: 'Black Market', value: blackmarket?.data[0]?.buy_price_min.toString(), inline: true})
-            .addFields({name: 'Caerleon Market', value: carleon?.data[0]?.sell_price_min.toString(), inline: true})
-            .addFields({name: 'Profit', value: profitnormal.toString(), inline: true})
-            .setColor('#33FFEC')
-            .setTimestamp()
-            msg.channel.send({embeds:[embed]})
+            const tax = blackmarket?.data[0]?.buy_price_min * 0.07
+            const totalprice = blackmarket?.data[0]?.buy_price_min + tax
+            if(totalprice > carleon?.data[0]?.sell_price_min){
+              const profitnow = totalprice - carleon?.data[0]?.sell_price_min
+              const embed = await new MessageEmbed()
+              .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
+              .setAuthor({ name: `🍟 ${itemnama[i]}` })
+              .setDescription('Quality Normal')
+              .addFields({name: 'Black Market', value: blackmarket?.data[0]?.buy_price_min.toString(), inline: true})
+              .addFields({name: 'Caerleon Market', value: carleon?.data[0]?.sell_price_min.toString(), inline: true})
+              .addFields({name: 'Profit', value: profitnow.toString(), inline: true})
+              .setColor('#33FFEC')
+              .setTimestamp()
+              msg.channel.send({embeds:[embed]})
+            }
           }
         }
 
-        if (blackmarket?.data[1]?.buy_price_min > carleon?.data[1]?.sell_price_min) {
+        if(blackmarket?.data[1]?.buy_price_min > carleon?.data[1]?.sell_price_min){
           if(blackmarket?.data[1]?.buy_price_min !== 0 && carleon?.data[1]?.sell_price_min !== 0){
-            const profitnormal = blackmarket?.data[1]?.buy_price_min - carleon?.data[1]?.sell_price_min
-            const embed = await new MessageEmbed()
-            .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
-            .setAuthor({ name: `🍟 ${itemnama[i]}` })
-            .setDescription('Quality Good')
-            .addFields({name: 'Black Market', value: blackmarket?.data[1]?.buy_price_min.toString(), inline: true})
-            .addFields({name: 'Caerleon Market', value: carleon?.data[1]?.sell_price_min.toString(), inline: true})
-            .addFields({name: 'Profit', value: profitnormal.toString(), inline: true})
-            .setColor('#33FFEC')
-            .setTimestamp()
-            msg.channel.send({embeds:[embed]})
+            const tax = blackmarket?.data[1]?.buy_price_min * 0.07
+            const totalprice = blackmarket?.data[1]?.buy_price_min + tax
+            if(totalprice > carleon?.data[1]?.sell_price_min){
+              const profitnow = totalprice - carleon?.data[1]?.sell_price_min
+              const embed = await new MessageEmbed()
+              .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
+              .setAuthor({ name: `🍟 ${itemnama[i]}` })
+              .setDescription('Quality Good')
+              .addFields({name: 'Black Market', value: blackmarket?.data[1]?.buy_price_min.toString(), inline: true})
+              .addFields({name: 'Caerleon Market', value: carleon?.data[1]?.sell_price_min.toString(), inline: true})
+              .addFields({name: 'Profit', value: profitnow.toString(), inline: true})
+              .setColor('#33FFEC')
+              .setTimestamp()
+              msg.channel.send({embeds:[embed]})
+            }
           }
         }
 
-        if (blackmarket?.data[2]?.buy_price_min > carleon?.data[2]?.sell_price_min) {
+        if(blackmarket?.data[2]?.buy_price_min > carleon?.data[2]?.sell_price_min){
           if(blackmarket?.data[2]?.buy_price_min !== 0 && carleon?.data[2]?.sell_price_min !== 0){
-            const profitnormal = blackmarket?.data[2]?.buy_price_min - carleon?.data[2]?.sell_price_min
-            const embed = await new MessageEmbed()
-            .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
-            .setAuthor({ name: `🍟 ${itemnama[i]}` })
-            .setDescription('Quality Outstanding')
-            .addFields({name: 'Black Market', value: blackmarket?.data[2]?.buy_price_min.toString(), inline: true})
-            .addFields({name: 'Caerleon Market', value: carleon?.data[2]?.sell_price_min.toString(), inline: true})
-            .addFields({name: 'Profit', value: profitnormal.toString(), inline: true})
-            .setColor('#33FFEC')
-            .setTimestamp()
-            msg.channel.send({embeds:[embed]})
+            const tax = blackmarket?.data[2]?.buy_price_min * 0.07
+            const totalprice = blackmarket?.data[2]?.buy_price_min + tax
+            if(totalprice > carleon?.data[2]?.sell_price_min){
+              const profitnow = totalprice - carleon?.data[2]?.sell_price_min
+              const embed = await new MessageEmbed()
+              .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
+              .setAuthor({ name: `🍟 ${itemnama[i]}` })
+              .setDescription('Quality Outstanding')
+              .addFields({name: 'Black Market', value: blackmarket?.data[2]?.buy_price_min.toString(), inline: true})
+              .addFields({name: 'Caerleon Market', value: carleon?.data[2]?.sell_price_min.toString(), inline: true})
+              .addFields({name: 'Profit', value: profitnow.toString(), inline: true})
+              .setColor('#33FFEC')
+              .setTimestamp()
+              msg.channel.send({embeds:[embed]})
+            }
           }
         }
 
-        if (blackmarket?.data[3]?.buy_price_min > carleon?.data[3]?.sell_price_min) {
+        if(blackmarket?.data[3]?.buy_price_min > carleon?.data[3]?.sell_price_min){
           if(blackmarket?.data[3]?.buy_price_min !== 0 && carleon?.data[3]?.sell_price_min !== 0){
-            const profitnormal = blackmarket?.data[3]?.buy_price_min - carleon?.data[3]?.sell_price_min
-            const embed = await new MessageEmbed()
-            .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
-            .setAuthor({ name: `🍟 ${itemnama[i]}` })
-            .setDescription('Quality Excellent')
-            .addFields({name: 'Black Market', value: blackmarket?.data[3]?.buy_price_min.toString(), inline: true})
-            .addFields({name: 'Caerleon Market', value: carleon?.data[3]?.sell_price_min.toString(), inline: true})
-            .addFields({name: 'Profit', value: profitnormal.toString(), inline: true})
-            .setColor('#33FFEC')
-            .setTimestamp()
-            msg.channel.send({embeds:[embed]})
+            const tax = blackmarket?.data[3]?.buy_price_min * 0.07
+            const totalprice = blackmarket?.data[3]?.buy_price_min + tax
+            if(totalprice > carleon?.data[3]?.sell_price_min){
+              const profitnow = totalprice - carleon?.data[3]?.sell_price_min
+              const embed = await new MessageEmbed()
+              .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
+              .setAuthor({ name: `🍟 ${itemnama[i]}` })
+              .setDescription('Quality Excellent')
+              .addFields({name: 'Black Market', value: blackmarket?.data[3]?.buy_price_min.toString(), inline: true})
+              .addFields({name: 'Caerleon Market', value: carleon?.data[3]?.sell_price_min.toString(), inline: true})
+              .addFields({name: 'Profit', value: profitnow.toString(), inline: true})
+              .setColor('#33FFEC')
+              .setTimestamp()
+              msg.channel.send({embeds:[embed]})
+            }
           }
         }
 
-        if (blackmarket?.data[4]?.buy_price_min > carleon?.data[4]?.sell_price_min) {
+        if(blackmarket?.data[4]?.buy_price_min > carleon?.data[4]?.sell_price_min){
           if(blackmarket?.data[4]?.buy_price_min !== 0 && carleon?.data[4]?.sell_price_min !== 0){
-            const profitnormal = blackmarket?.data[4]?.buy_price_min - carleon?.data[4]?.sell_price_min
-            const embed = await new MessageEmbed()
-            .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
-            .setAuthor({ name: `🍟 ${itemnama[i]}` })
-            .setDescription('Quality MasterPiece')
-            .addFields({name: 'Black Market', value: blackmarket?.data[4]?.buy_price_min.toString(), inline: true})
-            .addFields({name: 'Caerleon Market', value: carleon?.data[4]?.sell_price_min.toString(), inline: true})
-            .addFields({name: 'Profit', value: profitnormal.toString(), inline: true})
-            .setColor('#33FFEC')
-            .setTimestamp()
-            msg.channel.send({embeds:[embed]})
+            const tax = blackmarket?.data[4]?.buy_price_min * 0.07
+            const totalprice = blackmarket?.data[4]?.buy_price_min + tax
+            if(totalprice > carleon?.data[4]?.sell_price_min){
+              const profitnow = totalprice - carleon?.data[4]?.sell_price_min
+              const embed = await new MessageEmbed()
+              .setThumbnail('https://cdn.discordapp.com/icons/760431384127864842/cfa7adbca196b7c7965525d4c9993eb5.webp?size=96')
+              .setAuthor({ name: `🍟 ${itemnama[i]}` })
+              .setDescription('Quality MasterPiece')
+              .addFields({name: 'Black Market', value: blackmarket?.data[4]?.buy_price_min.toString(), inline: true})
+              .addFields({name: 'Caerleon Market', value: carleon?.data[4]?.sell_price_min.toString(), inline: true})
+              .addFields({name: 'Profit', value: profitnow.toString(), inline: true})
+              .setColor('#33FFEC')
+              .setTimestamp()
+              msg.channel.send({embeds:[embed]})
+            }
           }
         }
 
