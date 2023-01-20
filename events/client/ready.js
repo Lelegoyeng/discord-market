@@ -3,7 +3,8 @@ const { prefix } = require('@root/config')
 module.exports = client => {
 
     let botStatus = [
-        `${prefix}help`,
+        `Lelegoyeng ❤️`
+        //`${prefix}help`,
         // `${client.users.cache.size} users!`,
         // `${client.guilds.cache.size} servers!`
     ]
